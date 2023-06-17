@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package com.demoqa.tests.data;
 
 import com.github.javafaker.Faker;
 
@@ -22,7 +22,7 @@ public class TestData {
 
 
     Faker faker = new Faker(new Locale("en"));
-    String
+    public String
             headerTextPage = "Student Registration Form",
             firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
@@ -38,10 +38,10 @@ public class TestData {
 
     Date date = faker.date().birthday(18, 65);
     SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
-    String[] randomDate = formatter.format(date).split(" ");
-    String fullBirthDate = randomDate[0] + " " + randomDate[1] + "," + randomDate[2];
+    public String[] randomDate = formatter.format(date).split(" ");
+    public String fullBirthDate = randomDate[0] + " " + randomDate[1] + "," + randomDate[2];
 
-    String userCity(String value) {
+    public String userCity(String value) {
         String city = new String();
         if (Objects.equals(value, "NCR")) {
             city = faker.options().option(cityNCR);
@@ -55,6 +55,6 @@ public class TestData {
         return city;
     }
 
-    String fullAddress = userState + " " + userCity(userState);
+    public String fullAddress = userState + " " + userCity(userState);
 
 }
