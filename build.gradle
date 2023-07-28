@@ -1,7 +1,7 @@
 plugins {
-    id 'java-library'
+    id "java"
+    id "io.qameta.allure" version "2.11.2"
 }
-
 
 repositories {
     mavenCentral()
@@ -11,14 +11,40 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+//compileJava {
+//    options.encoding = 'UTF-8'
+//}
+//compileTestJava {
+//    options.encoding = 'UTF-8'
+//}
+
+allure {
+    report {
+        version.set("2.23.1") //версия Allure Report (https://github.com/allure-framework/allure2)
+    }
+    adapter {
+        aspectjWeaver.set(true) // обработка аннотации @Step
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.23.0") //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
+            }
+        }
+    }
+}
+
 dependencies {
-    testImplementation (
-            "com.codeborne:selenide:6.15.0",
-            "org.junit.jupiter:junit-jupiter:5.10.0-M1",
-            "com.github.javafaker:javafaker:1.0.2"
-    )
+    testImplementation  "org.junit.jupiter:junit-jupiter:5.10.0",
+                        "io.qameta.allure:allure-selenide:2.23.0",
+                        "com.codeborne:selenide:6.15.0",
+                        "com.github.javafaker:javafaker:1.0.2"
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {}
+}
+
+task remote_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("remote_test")
+    }
 }
