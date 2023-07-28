@@ -12,7 +12,7 @@ public class RegistrationFormWithTestDataTests extends RemoteTestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
     @Test
-    @Tag("remote")
+    @Tag("remote_test")
     @DisplayName("Successful registration")
     void successfulFillFormTest() {
 
