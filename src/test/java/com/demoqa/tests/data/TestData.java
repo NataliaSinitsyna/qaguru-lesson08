@@ -14,11 +14,12 @@ public class TestData {
             subjects = {"Maths", "Accounting", "Arts", "Social Studies", "English", "Chemistry",
             "Computer Science", "Commerce", "Economics", "Social Studies", "Biology", "History"},
             hobbies = {"Sports", "Reading", "Music"},
-            state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"},
-            cityNCR = {"Delhi", "Gurgaon", "Noida"},
-            cityUP = {"Agra", "Lucknow", "Merrut"},
-            cityH = {"Karnal", "Panipat"},
-            cityR = {"Jaipur", "Jaiselmer"};
+//            state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"},
+//            cityNCR = {"Delhi", "Gurgaon", "Noida"},
+//            cityUP = {"Agra", "Lucknow", "Merrut"},
+//            cityH = {"Karnal", "Panipat"},
+//            cityR = {"Jaipur", "Jaiselmer"};
+            state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
 
     Faker faker = new Faker(new Locale("en"));
@@ -41,17 +42,24 @@ public class TestData {
     public String[] randomDate = formatter.format(date).split(" ");
     public String fullBirthDate = randomDate[0] + " " + randomDate[1] + "," + randomDate[2];
 
-    public String userCity(String value) {
+    public String userCity() {
         String city = new String();
-        if (Objects.equals(value, "NCR")) {
+        if (Objects.equals(userState, "NCR")) {
+            String[] cityNCR = {"Delhi", "Gurgaon", "Noida"};
             city = faker.options().option(cityNCR);
-        } else if (Objects.equals(value, "Uttar Pradesh")) {
+        } else if (Objects.equals(userState, "Uttar Pradesh")) {
+            String[] cityUP = {"Agra", "Lucknow", "Merrut"};
             city = faker.options().option(cityUP);
-        } else if (Objects.equals(value, "Haryana")) {
+        } else if (Objects.equals(userState, "Haryana")) {
+            String[] cityH = {"Karnal", "Panipat"};
             city = faker.options().option(cityH);
-        } else if (Objects.equals(value, "Rajasthan")) {
+        } else if (Objects.equals(userState, "Rajasthan")) {
+            String[] cityR = {"Jaipur", "Jaiselmer"};
             city = faker.options().option(cityR);
         }
+
         return city;
     }
+    //public String fullAddress = userState + " " + userCity();
+
 }

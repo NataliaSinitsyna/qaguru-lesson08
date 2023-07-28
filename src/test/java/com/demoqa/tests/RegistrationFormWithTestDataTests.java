@@ -30,7 +30,7 @@ public class RegistrationFormWithTestDataTests extends RemoteTestBase {
                     .uploadPicture(testData.userPhoto)
                     .setAddress(testData.userAddress)
                     .setState(testData.userState)
-                    .setCity(testData.userCity(testData.userState))
+                    .setCity(testData.userCity())
                     .submit();
         });
 
@@ -45,7 +45,7 @@ public class RegistrationFormWithTestDataTests extends RemoteTestBase {
                     .verifyResult("Hobbies", testData.userHobbies)
                     .verifyResult("Picture", testData.userPhoto)
                     .verifyResult("Address", testData.userAddress)
-                    .verifyResult("State and City", testData.userState + " " + testData.userCity(testData.userState));
+                    .verifyResult("State and City", testData.userState + " " + testData.userCity());
         });
     }
 }
