@@ -2,6 +2,8 @@ package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
 import com.demoqa.tests.data.TestData;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -10,6 +12,8 @@ public class RegistrationFormWithTestDataTests extends RemoteTestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
     @Test
+    @Tag("remote_test")
+    @DisplayName("Successful registration")
     void successfulFillFormTest() {
 
         step("Открыть и заполнить форму", () -> {
@@ -26,7 +30,7 @@ public class RegistrationFormWithTestDataTests extends RemoteTestBase {
                     .uploadPicture(testData.userPhoto)
                     .setAddress(testData.userAddress)
                     .setState(testData.userState)
-                    .setCity(testData.userCity(testData.userState))
+                    .setCity(testData.userCity)
                     .submit();
         });
 
@@ -41,7 +45,7 @@ public class RegistrationFormWithTestDataTests extends RemoteTestBase {
                     .verifyResult("Hobbies", testData.userHobbies)
                     .verifyResult("Picture", testData.userPhoto)
                     .verifyResult("Address", testData.userAddress)
-                    .verifyResult("State and City", testData.fullAddress);
+                    .verifyResult("State and City", testData.userState + " " + testData.userCity);
         });
     }
 }
