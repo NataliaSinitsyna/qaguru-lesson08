@@ -54,7 +54,4 @@ public class TestData {
         }
         return city;
     }
-
-    public String fullAddress = userState + " " + userCity(userState);
-
 }
