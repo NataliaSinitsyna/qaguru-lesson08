@@ -45,7 +45,7 @@ public class RegistrationFormWithTestDataTests extends RemoteTestBase {
                     .verifyResult("Hobbies", testData.userHobbies)
                     .verifyResult("Picture", testData.userPhoto)
                     .verifyResult("Address", testData.userAddress)
-                    .verifyResult("State and City", testData.fullAddress);
+                    .verifyResult("State and City", testData.userState + " " + testData.userCity(testData.userState));
         });
     }
 }
