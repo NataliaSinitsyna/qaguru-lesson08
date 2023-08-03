@@ -15,11 +15,13 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class RemoteTestBase {
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1600x1600";
-        Configuration.browserVersion = "100.0";
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browserSize = System.getProperty("browserSize", "1600x1600");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         //Configuration.holdBrowserOpen = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = System.getProperty("remoteBrowser",
+                "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

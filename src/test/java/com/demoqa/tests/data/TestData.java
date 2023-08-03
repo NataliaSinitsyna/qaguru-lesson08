@@ -14,11 +14,6 @@ public class TestData {
             subjects = {"Maths", "Accounting", "Arts", "Social Studies", "English", "Chemistry",
             "Computer Science", "Commerce", "Economics", "Social Studies", "Biology", "History"},
             hobbies = {"Sports", "Reading", "Music"},
-//            state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"},
-//            cityNCR = {"Delhi", "Gurgaon", "Noida"},
-//            cityUP = {"Agra", "Lucknow", "Merrut"},
-//            cityH = {"Karnal", "Panipat"},
-//            cityR = {"Jaipur", "Jaiselmer"};
             presentState = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
 
